@@ -9,10 +9,10 @@ const assert = require('assert');
 class MyTest extends BaseTest
 {
 	async test() {
-        // testejem LOGIN INCORRECTE usuari predefinit
+        // testejem ATAC SQL injection exitós
         //////////////////////////////////////////////////////
-        let user = "pepa";
-        let pass = "pepa123";
+        let user = "pepa'; -- ";
+        let pass = "skdjfksdjfhkdsjfhkjsd";
         // esperar a que el servidor es posi online
         await this.driver.sleep(6000);
         // accedim al web
@@ -24,8 +24,8 @@ class MyTest extends BaseTest
 
         // comprovem que el message és ERRONI
         let resultText = await this.driver.findElement(By.xpath("//div[@class='user']")).getText();
-        let assertMessage = "Hola pepa (user).";
-        assert(resultText==assertMessage,`ERROR TEST: l'usuari ${user}/${pass} hauria de fallar amb el missatge '`+assertMessage+`' en un div.user`);
+        let assertMessage = "No hi ha cap usuari amb aquest nom i contrasenya.";
+        assert(resultText==assertMessage,`ERROR TEST: L'atac de SQL injection hauria de fallar a index2.php .\nAtac provat: ${user}`);
         
         console.log("TEST OK");
 	}

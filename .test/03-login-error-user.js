@@ -14,7 +14,7 @@ class MyTest extends BaseTest
         let user = "sjdosdjfods";
         let pass = "oidjsfojdsofij";
         // esperar a que el servidor es posi online
-        await this.driver.sleep(10000);
+        await this.driver.sleep(6000);
         // accedim al web
         await this.driver.get("http://localhost:8000/");
         await this.driver.findElement(By.name("user")).sendKeys(user);
