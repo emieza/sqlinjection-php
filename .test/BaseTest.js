@@ -39,10 +39,13 @@ class BaseTest {
     }
 
     async run() {
+        console.log("running setUp...");
         await this.setUp();
         try {
+            console.log("running test...");
             await this.test();
         } finally {
+            console.log("running tearDown...");
             await this.tearDown();
         }
     }
@@ -74,24 +77,28 @@ class BaseTest {
 
     runServer( command, options ) {
         // Engeguem server amb la APP
+        let app = null;
         if( process.platform=="win32" ) {
-            this.cmd = spawn(command+".bat",options,{shell:true});
+            app = spawn(command+".bat",options,{shell:true});
         } else {
             // linux, macos (darwin), or other
-            this.cmd = spawn(command+".sh",options);
+            app = spawn(command+".sh",options);
         }
-
-        this.cmd.stdout.on("data", data => {
-            console.log(`stdout: ${data}`);
-        });
-        this.cmd.stderr.on("data", data => {
-            console.log(`stderr: ${data}`);
-        });
-        this.cmd.on('error', (error) => {
-            console.log(`error: ${error.message}`);
-        });
-        this.cmd.on("close", code => {
-            console.log(`child process exited with code ${code}`);
+        this.cmd = app;
+        return new Promise((resolveFunc) => {
+            app.stdout.on("data", data => {
+                console.log(`stdout: ${data}`);
+            });
+            app.stderr.on("data", data => {
+                console.log(`stderr: ${data}`);
+            });
+            app.on('error', (error) => {
+                console.log(`error: ${error.message}`);
+            });
+            app.on("close", code => {
+                resolveFunc(code);
+                console.log(`child process exited with code ${code}`);
+            });
         });
     }
 
