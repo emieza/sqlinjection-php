@@ -26,3 +26,4 @@ class MyTest extends BaseTest
 	console.log("END")
 })();
 
+exports.MyTest = MyTest;
