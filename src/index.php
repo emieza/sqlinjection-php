@@ -50,7 +50,7 @@
 					echo "<div class='user'>Hola ".$user["name"]." (".$user["role"].").</div>";
 				}
 			else
-				echo "<div class='user'>No hi ha cap usuari amb aquest nom o contrasenya.</div>";
+				echo "<div class='user'>No hi ha cap usuari amb aquest nom i contrasenya.</div>";
 		}
  	?>
  	
@@ -59,7 +59,7 @@
   	<form method="post">
 		User: <input type="text" name="user" /><br>
 		Pass: <input type="text" name="password" /><br>
-		<input type="submit" /><br>
+		<input type="submit" value="Login" /><br>
  	</form>
   	</fieldset>
 	
