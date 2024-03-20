@@ -18,12 +18,15 @@ class MyTest extends BaseTest
 	}
 }
 
-// executem el test
-
-(async function test_example() {
+async function mytest() {
 	const test = new MyTest();
-	await test.run();
-	console.log("END")
-})();
+	return await test.run();
+}
 
-exports.MyTest = MyTest;
+// executem el test si estem al main
+if( require.main === module) {
+	mytest();
+}
+
+// exports del test
+exports.mytest = mytest;

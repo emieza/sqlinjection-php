@@ -31,11 +31,15 @@ class MyTest extends BaseTest
 	}
 }
 
-// executem el test
+async function mytest() {
+    const test = new MyTest();
+    return await test.run();
+}
 
-(async function test_example() {
-	const test = new MyTest();
-	await test.run();
-	console.log("END")
-})();
+// executem el test si estem al main
+if( require.main === module) {
+    mytest();
+}
 
+// exports del test
+exports.mytest = mytest;

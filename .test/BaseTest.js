@@ -39,15 +39,26 @@ class BaseTest {
     }
 
     async run() {
+        let error = 0; // no error
         console.log("running setUp...");
         await this.setUp();
         try {
             console.log("running test...");
             await this.test();
+        } catch (err) {
+            // error detected
+            error = err;
+            console.error(err);
         } finally {
             console.log("running tearDown...");
             await this.tearDown();
+            if( error ) {
+                throw error;
+                return error;
+            }
+            return 0;
         }
+        return "ERROR in run";
     }
 
     async test() {

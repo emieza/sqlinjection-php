@@ -1,6 +1,6 @@
 # SQL injection - exercici
 
-En aquest repositori podem veure un exemple de SQL injection.
+En aquest repositori podem veure un exemple de formulari en PHP vulnerable a SQL injection.
 
 Disposeu de més informació a https://bytes.cat/sql_injection
 
