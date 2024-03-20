@@ -6,7 +6,7 @@ Disposeu de més informació a https://bytes.cat/sql_injection
 
 ## Instal·lació
 
-Posa en marxa el servidor amb (cal tenir instal·lat `Docker.io`:
+Posa en marxa el servidor amb (cal tenir instal·lat `Docker.io`):
 
     $ ./run.sh
 
@@ -45,7 +45,15 @@ Per exemple:
 
     $ node 01-page-h1.js
 
-Per passar tots els tests seguits:
+Per passar tots els tests seguits amb Jest:
 
-    $ ./test.sh
+    $ npm test
+
+Per passar els del form vulnerable:
+
+    $ npm test form-vulnerable
+
+Per passar els del form "invulnerable":
+
+    $ npm test form-invulnerable
 
