@@ -16,7 +16,7 @@ class MyTest extends BaseTest
         // esperar a que el servidor es posi online
         await this.driver.sleep(6000);
         // accedim al web
-        await this.driver.get("http://localhost:8000/");
+        await this.driver.get("http://localhost:8000/index2.php");
         await this.driver.findElement(By.name("user")).sendKeys(user);
         await this.driver.findElement(By.name("password")).sendKeys(pass);
         await this.driver.findElement(By.xpath("//input[@value='Login']")).click();
