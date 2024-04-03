@@ -9,7 +9,7 @@ const assert = require('assert');
 class MyTest extends BaseTest
 {
 	async test() {
-        // testejem LOGIN INCORRECTE usuari predefinit
+        // testejem LOGIN CORRECTE usuari predefinit
         //////////////////////////////////////////////////////
         let user = "pepa";
         let pass = "pepa123";
@@ -22,10 +22,10 @@ class MyTest extends BaseTest
         await this.driver.findElement(By.xpath("//input[@value='Login']")).click();
         await this.driver.sleep(1000);
 
-        // comprovem que el message és ERRONI
+        // comprovem que el message és CORRECTE
         let resultText = await this.driver.findElement(By.xpath("//div[@class='user']")).getText();
         let assertMessage = "Hola pepa (user).";
-        assert(resultText==assertMessage,`ERROR TEST: l'usuari ${user}/${pass} hauria de fallar amb el missatge '`+assertMessage+`' en un div.user`);
+        assert(resultText==assertMessage,`ERROR TEST: l'usuari ${user}/${pass} hauria d'entrar amb el missatge '`+assertMessage+`' en un div.user`);
         
         console.log("TEST OK");
 	}
