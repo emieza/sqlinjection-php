@@ -57,3 +57,6 @@ Per passar els del form "invulnerable":
 
     $ npm test form-invulnerable
 
+Si vols veure el desenvolupament dels tests en el browser (desactivant el mode HEADLESS) pots fer:
+
+    $ HEADLESS=false npm test form-invulnerable
